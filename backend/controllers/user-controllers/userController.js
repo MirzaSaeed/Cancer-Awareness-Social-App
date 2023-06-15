@@ -14,6 +14,7 @@ const registerUser = asyncHandler(async (req, res) => {
     gender,
     birthday,
     email,
+    city,
     password,
     contactNumber,
   } = req.body;
@@ -26,6 +27,7 @@ const registerUser = asyncHandler(async (req, res) => {
       birthday ||
       email ||
       password ||
+      city ||
       contactNumber
     )
   ) {
@@ -51,6 +53,7 @@ const registerUser = asyncHandler(async (req, res) => {
     gender,
     birthday,
     email,
+    city,
     password: hashedPassword,
     contactNumber,
     admin: getAdmin.id,
@@ -60,6 +63,7 @@ const registerUser = asyncHandler(async (req, res) => {
       _id: user.id,
       firstName: user.firstName,
       lastName: user.lastName,
+      city: user.city,
       gender: user.gender,
       birthday: user.birthday,
       email: user.email,
@@ -99,7 +103,7 @@ const addUsername = asyncHandler(async (req, res) => {
     res.status(400).json({ message: "User not authorized" });
   } else {
     const { username } = req.body;
-    const isExist = await userModel.findOne({ username });
+    const isExist = await userModel.findOne({ username: username });
     if (isExist) {
       res.json("Username already exist");
     } else {
@@ -123,6 +127,7 @@ const loggedInuser = asyncHandler(async (req, res) => {
     role,
     birthday,
     email,
+    username,
     contactNumber,
     companyName,
     companyURL,
@@ -143,6 +148,7 @@ const loggedInuser = asyncHandler(async (req, res) => {
     contactNumber,
     companyName,
     companyURL,
+    username,
     branchName,
     totalEmployees,
     city,
@@ -186,6 +192,38 @@ const updateUser = asyncHandler(async (req, res) => {
   res.status(200).json(getData);
 });
 
+// * POST Request
+// * Post /auth/user/:id/addRelationship
+const addRelationship = asyncHandler(async (req, res) => {
+  const user = await userModel.findById(req.params.id);
+
+  if (!user) {
+    res.status(400).json({ message: "User not authorized" });
+  } else {
+    const { relation } = req.body;
+    const addRelation = await userModel.findByIdAndUpdate(req.params.id, {
+      relation,
+    });
+    const getData = await userModel.findById(req.params.id);
+    res.status(201).json({ message: "Relation added successfuly", getData });
+  }
+});
+// * PUT Request
+// * Put /auth/user/addDiagnose/:id
+const addDiagnose = asyncHandler(async (req, res) => {
+  const user = await userModel.findById(req.params.id);
+
+  if (!user) {
+    res.status(400).json({ message: "User not authorized" });
+  } else {
+    const { diagnose } = req.body;
+    const addDiagnose = await userModel.findByIdAndUpdate(req.params.id, {
+      diagnose,
+    });
+    const getData = await userModel.findById(req.params.id);
+    res.status(201).json({ message: "Diagnose added successfuly", getData });
+  }
+});
 // * Generate JWT
 const generateToken = (id) => {
   return jwt.sign({ id }, secret, {
@@ -199,4 +237,6 @@ module.exports = {
   loggedInuser,
   loginUser,
   addUsername,
+  addDiagnose,
+  addRelationship,
 };

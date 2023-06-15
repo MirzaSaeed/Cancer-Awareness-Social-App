@@ -31,13 +31,13 @@ const commenting = asyncHandler(async (req, res) => {
 });
 
 // * GET Request
-// * Get /auth/user/post/comments
+// * Get /user/postcomments/:id
 const getComments = asyncHandler(async (req, res) => {
   const verifiedUser = await userModel.findById(req.user.id);
   if (verifiedUser) {
-    const comments = await commentModel.find();
+    const comments = await commentModel.find({ post: req.params.id });
     if (comments) {
-      res.status(201).json({comments});
+      res.status(201).json({ comments });
     } else {
       res.status(401).json("No Comments");
     }
@@ -45,7 +45,6 @@ const getComments = asyncHandler(async (req, res) => {
     res.status(401).json("Not Authorized");
   }
 });
-
 
 // * GET Request
 // * Get /auth/user/post/comment/:id
@@ -62,7 +61,6 @@ const getComment = asyncHandler(async (req, res) => {
     res.status(401).json("Not Authorized");
   }
 });
-
 
 // * DELETE Request
 // * Delete /auth/user/post/comment/:id

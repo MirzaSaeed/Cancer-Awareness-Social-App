@@ -31,6 +31,16 @@ const userSchema = new Schema({
   contactNumber: {
     type: String,
   },
+  relation: {
+    type: String,
+  },
+  diagnose: {
+    type: String,
+  },
+  posts: [{ type: mongoose.Schema.Types.ObjectId, ref: "userPosts" }],
+
+  followers: [{ type: mongoose.Schema.Types.ObjectId, ref: "userAuths" }],
+  following: [{ type: mongoose.Schema.Types.ObjectId, ref: "userAuths" }],
 });
 
 module.exports = mongoose.model("userAuths", userSchema);

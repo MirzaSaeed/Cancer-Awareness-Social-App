@@ -14,21 +14,22 @@ const postSchema = new Schema({
   path: {
     type: String,
   },
-  message: {
+  caption: {
     type: String,
   },
-  description: {
-    type: String,
+  image: {
+    type: Buffer,
   },
-
   user: {
     type: Schema.Types.ObjectId,
     ref: "userAuths",
   },
+  comments: [{ type: mongoose.Schema.Types.ObjectId, ref: "Comment" }],
   admin: {
     type: Schema.Types.ObjectId,
     ref: "adminAuths",
   },
+  likes: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }],
 });
 
 module.exports = mongoose.model("userPosts", postSchema);

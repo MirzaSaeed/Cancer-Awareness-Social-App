@@ -102,6 +102,7 @@ const loggedInuser = asyncHandler(async (req, res) => {
   const {
     _id,
     firstName,
+    username,
     lastName,
     birthday,
     gender,
@@ -114,6 +115,7 @@ const loggedInuser = asyncHandler(async (req, res) => {
     firstName,
     lastName,
     gender,
+    username,
     birthday,
     email,
     contactNumber,

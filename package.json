@@ -1,7 +1,7 @@
 {
   "name": "backend",
   "version": "1.0.0",
-  "description": "This is the Backend of Developing application i.e., Employee Management System",
+  "description": "This is the Backend of Developing application",
   "main": "server.js",
   "scripts": {
     "start": "node backend/server.js",
@@ -10,11 +10,7 @@
     "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "keywords": [
-    "EMS",
-    "Employee",
-    "Management",
-    "System",
-    "ConnectHR"
+   
   ],
   "author": "Mirza Saeed MERN Stack Developer",
   "license": "ISC",

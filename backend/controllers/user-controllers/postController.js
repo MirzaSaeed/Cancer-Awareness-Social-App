@@ -3,26 +3,31 @@ const asyncHandler = require("express-async-handler");
 const userModel = require("../../models/user-models/userModel");
 const postModel = require("../../models/user-models/postModel");
 const adminModel = require("../../models/admin-models/userModel");
-
+const sharp = require("sharp");
 // * POST Request
 // * Post /auth/user/post/upload
 const uploadPost = asyncHandler(async (req, res) => {
   const admin = await adminModel.findOne();
   const user = await userModel.findById(req.user.id);
   if (user) {
-    const { title, description, message, uploadDate } = req.body;
-    const { filename, path } = req.file;
+    const postBuffer = req.file.buffer;
+    const { width, height } = await sharp(postBuffer).metadata();
+    const image = await sharp(postBuffer)
+      .resize(Math.round(width * 0.5), Math.round(height * 0.5))
+      .toBuffer();
+
+    const { caption, uploadDate } = req.body;
+    // const { filename, path } = req.file;
     const uploadPost = await postModel.create({
-      title,
-      description,
-      message,
-      filename,
-      path,
+      image,
+      caption,
       uploadDate,
       user: req.user.id,
+      username: user.username,
       admin: admin.id,
     });
-    res.json({ uploadPost });
+    res.status(201).json({ message: "Post Uploadedc" });
+    // console.log(image)
   } else {
     res.status(400).json({ message: "User not authorized" });
   }
@@ -102,7 +107,7 @@ const updatePost = asyncHandler(async (req, res) => {
 const feeds = asyncHandler(async (req, res) => {
   const user = await userModel.findById(req.user.id);
   if (user) {
-    const posts = await postModel.find();
+    const posts = await postModel.find().populate("user", "firstName lastName");
     if (!posts) {
       return res.status(404).json({ message: "Post not found" });
     } else {
