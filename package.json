@@ -9,14 +9,13 @@
     "client": "npm start --prefix  frontend",
     "dev": "concurrently \"npm run server\" \"npm run client\""
   },
-  "keywords": [
-   
-  ],
+  "keywords": [],
   "author": "Mirza Saeed MERN Stack Developer",
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "caniuse-lite": "^1.0.30001452",
+    "cloudinary": "^1.37.3",
     "concurrently": "^7.6.0",
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",

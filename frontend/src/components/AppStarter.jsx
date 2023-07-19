@@ -10,14 +10,15 @@ import Timeline from "./roles/User/Timeline";
 import Username from "./roles/User/Username";
 import Relationship from "./roles/User/Relationship";
 import Profile from "./core/Profile";
-
+import SelectType from "./core/SelectType";
+import Account from "./core/Account";
 const containerStyles = {
   display: "flex",
   flexDirection: "column",
-  justifyContent: "center",
   alignItems: "center",
-  minHeight: "100vh",
   background: "#232B3E",
+  margin: 0,
+  minHeight: "100vh",
   color: "#fff",
 };
 
@@ -89,6 +90,26 @@ const AppStarter = () => {
         <>
           <Header />
           <Profile />
+          <Footer />
+        </>
+      ),
+    },
+    {
+      path: "/setType",
+      element: (
+        <>
+          <Header />
+          <SelectType />
+          <Footer />
+        </>
+      ),
+    },
+    {
+      path: "/Account",
+      element: (
+        <>
+          <Header />
+          <Account />
           <Footer />
         </>
       ),

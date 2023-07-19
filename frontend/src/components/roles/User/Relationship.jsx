@@ -19,9 +19,9 @@ const Relationship = () => {
   const handleRelationSelect = (relation) => {
     setSelectedRelation(relation);
   };
-  const onClick= ()=>{
-    navigate("/timeline")
-  }
+  const onClick = () => {
+    navigate("/setType");
+  };
 
   return (
     <Box sx={containerStyles}>

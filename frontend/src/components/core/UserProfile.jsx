@@ -16,15 +16,15 @@ const UserProfile = () => {
           alt="User Avatar"
           sx={{ width: 64, height: 64 }}
         />
-        <Typography variant="body2">
-          <strong>Posts:</strong> 21
-        </Typography>
-        <Typography variant="body2">
-          <strong>Followers:</strong> 54
-        </Typography>
-        <Typography variant="body2">
-          <strong>Following:</strong> 32
-        </Typography>
+          <Typography variant="body2">
+            <strong>Posts:</strong> 21
+          </Typography>
+          <Typography variant="body2">
+            <strong>Followers:</strong> 54
+          </Typography>
+          <Typography variant="body2">
+            <strong>Following:</strong> 32
+          </Typography>
       </Box>
       <Typography variant="h6" sx={{ mb: 1 }}>
         John Doe

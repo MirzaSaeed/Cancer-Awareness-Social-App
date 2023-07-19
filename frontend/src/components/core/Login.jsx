@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { Button, Typography, TextField, Box } from "@mui/material";
 import logo from "../assets/2900470_25486 [Converted].png";
 
-import { Email, Lock, } from "@mui/icons-material";
+import { Email, Lock } from "@mui/icons-material";
 import { useNavigate, Outlet } from "react-router-dom";
 import SignUp from "./SignUp";
 const headingStyles = {
@@ -14,6 +14,7 @@ const headingStyles = {
 const logoStyles = {
   height: "100px",
 };
+
 const Login = () => {
   const navigate = useNavigate();
 
@@ -24,7 +25,7 @@ const Login = () => {
 
   // TODO: const handleSubmit = (event) => {
   //   event.preventDefault();
-  //   // Add your login logic here
+  // Add your login logic here
   // };
   return (
     <>
@@ -71,10 +72,11 @@ const Login = () => {
               },
             }}
             InputProps={{
-              startAdornment: <Email  sx={{ color: "#fff" ,paddingRight: '5px'}} />,
+              startAdornment: (
+                <Email sx={{ color: "#fff", paddingRight: "5px" }} />
+              ),
               style: { color: "#909BAD" },
               sx: {
-                
                 "& .MuiOutlinedInput-notchedOutline": {
                   borderColor: "#909BAD",
                   color: "#fff",
@@ -95,8 +97,6 @@ const Login = () => {
             type="password"
             InputLabelProps={{
               sx: {
-             
-
                 color: "#909BAD",
                 "&.Mui-focused": {
                   color: "#fff",
@@ -104,7 +104,9 @@ const Login = () => {
               },
             }}
             InputProps={{
-              startAdornment: <Lock sx={{ color: "#fff" ,paddingRight: '5px'}} />,
+              startAdornment: (
+                <Lock sx={{ color: "#fff", paddingRight: "5px" }} />
+              ),
               style: { color: "#909BAD" },
               sx: {
                 "& .MuiOutlinedInput-notchedOutline": {
@@ -127,7 +129,12 @@ const Login = () => {
               alignItems: "center",
             }}
           >
-            <Button sx={{ marginTop: "1rem" }} onClick={()=> navigate("/setUsername")} variant="contained" size="large">
+            <Button
+              sx={{ marginTop: "1rem" }}
+              onClick={() => navigate("/setUsername")}
+              variant="contained"
+              size="large"
+            >
               Login
             </Button>
             <Typography variant="subtitle1" sx={{ color: "#909BAD", mt: 2 }}>
@@ -156,7 +163,6 @@ const Login = () => {
         >
           {/* Render the login form */}
           <SignUp />
-          
         </motion.div>
       )}
     </>

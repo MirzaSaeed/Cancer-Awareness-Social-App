@@ -3,10 +3,11 @@ const posts = [
     id: 1,
     author: "Kevin Butz",
     image:
-      "https://images.unsplash.com/photo-1585416294584-b849d9e571ff?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8cG9zdHN8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=400&q=60",
+      "https://images.unsplash.com/photo-1578496781379-7dcfb995293d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fGNhbmNlcnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=300&q=60",
     avatar:
       "https://images.unsplash.com/profile-1550909047272-90b93f9b8175?dpr=1&auto=format&fit=crop&w=32&h=32&q=60&crop=faces&bg=fff",
-    content: "Dog with jacket leaning into the wind on a boardwalk.",
+    content:
+      "Two young girls with acute lymphocytic leukemia (ALL) receiving chemotherapy. The girl on the left has an IV tube in the neck, the other girl's IV is in her arm. They are sitting on a bed and are demonstrating some of the procedures and techniques used with chemotherapy.    ",
     timestamp: "3 hours ago",
     comment: [
       {
@@ -202,6 +203,86 @@ const posts = [
     ],
     content: "Young Girl Receiving Chemotherapy",
     timestamp: "1 day ago",
+  },
+  {
+    id: 5,
+    author: "Alexander Grey",
+    image:
+      "https://images.unsplash.com/photo-1606166187734-a4cb74079037?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTV8fGNhbmNlcnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=400&q=60",
+    avatar:
+      "https://images.unsplash.com/profile-1660845751050-33687caf3461image?dpr=1&auto=format&fit=crop&w=32&h=32&q=60&crop=faces&bg=fff",
+    content: "Patient recovering from surgery.",
+    timestamp: "3 day ago",
+    shares: [
+      {
+        id: 1,
+        username: "Tomcruies",
+        avatar: "https://i.pravatar.cc/150?img=1",
+      },
+      {
+        id: 2,
+        username: "Janesmith",
+        avatar: "https://i.pravatar.cc/150?img=2",
+      },
+      {
+        id: 3,
+        username: "Alicejohnson",
+        avatar: "https://i.pravatar.cc/150?img=3",
+      },
+      {
+        id: 5,
+        username: "Alicejohnson",
+        avatar: "https://i.pravatar.cc/150?img=3",
+      },
+    ],
+    likes: [
+      {
+        id: 1,
+        username: "Tomcruies",
+        avatar: "https://i.pravatar.cc/150?img=1",
+      },
+      {
+        id: 2,
+        username: "Janesmith",
+        avatar: "https://i.pravatar.cc/150?img=2",
+      },
+      {
+        id: 3,
+        username: "Alicejohnson",
+        avatar: "https://i.pravatar.cc/150?img=3",
+      },
+    ],
+    comment: [
+      {
+        id: 1,
+        username: "Tomcruies",
+        avatar: "https://i.pravatar.cc/150?img=1",
+        comment: "Great post!",
+        replies: [
+          {
+            id: 1,
+            username: "JohnDoe",
+            avatar: "https://i.pravatar.cc/150?img=4",
+            reply: "Thanks, Tom!",
+            timestamp: "2023-05-10T10:30:00Z",
+          },
+        ],
+      },
+      {
+        id: 2,
+        username: "Janesmith",
+        avatar: "https://i.pravatar.cc/150?img=2",
+        replies: [],
+        comment: "looks great!",
+      },
+      {
+        id: 3,
+        username: "Alicejohnson",
+        avatar: "https://i.pravatar.cc/150?img=3",
+        replies: [],
+        comment: "Awesome!",
+      },
+    ],
   },
 ];
 

@@ -1,7 +1,7 @@
 const express = require("express");
 const {
-  getLikes,
-  likeapost,
+  unLikePost,
+  likePost,
 } = require("../../controllers/user-controllers/likeController");
 const router = express.Router();
 const {
@@ -72,5 +72,8 @@ router.post("/user/follow", userProtect, followUser);
 router.post("/user/unfollow", userProtect, unfollowUser);
 router.get("/user/followers", userProtect, getfollowers);
 router.get("/user/following", userProtect, getfollowing);
-
+ 
+// ? Likes Routes
+router.post("/user/post/like", userProtect, likePost);
+router.post("/user/post/unlike", userProtect, unLikePost);
 module.exports = router;

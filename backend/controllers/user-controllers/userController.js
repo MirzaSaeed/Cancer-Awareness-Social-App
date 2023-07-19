@@ -2,7 +2,7 @@ const asyncHandler = require("express-async-handler");
 const userModel = require("../../models/user-models/userModel");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const { secret } = require("../../middleware/errorMiddleware");
+const  secret  = process.env.SECRET
 const adminModel = require("../../models/admin-models/userModel");
 
 // * POST Request

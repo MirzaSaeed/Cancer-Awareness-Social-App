@@ -1,9 +1,9 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const { URL } = require("./config/dbConfig");
+const dotenv = require("dotenv").config();
 const cors = require("cors");
 const PORT = process.env.PORT || 9000;
-const dotenv = require("dotenv").config();
 const multer = require("multer");
 const app = express();
 const path = require("path");

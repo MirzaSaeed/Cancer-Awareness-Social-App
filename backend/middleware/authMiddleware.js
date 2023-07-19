@@ -1,6 +1,5 @@
 const jwt = require("jsonwebtoken");
 const asyncHandler = require("express-async-handler");
-const secret = process.env.SECRET_KEY
 const adminModel = require("../models/admin-models/userModel");
 const employeeModel = require("../models/user-models/userModel");
 
@@ -13,9 +12,9 @@ const userProtect = asyncHandler(async (req, res, next) => {
     try {
       // * Get Token from Header
       token = req.headers.authorization.split(" ")[1];
-
+      console.log();
       // ! Verify Token
-      const decoded = jwt.verify(token, secret);
+      const decoded = jwt.verify(token, process.env.SECRET);
 
       // * Get user from token id is in payload/data
       req.user = await employeeModel.findById(decoded.id).select("-password");
@@ -45,7 +44,7 @@ const adminProtect = asyncHandler(async (req, res, next) => {
       token = req.headers.authorization.split(" ")[1];
 
       // ! Verify Token
-      const decoded = jwt.verify(token, secret);
+      const decoded = jwt.verify(token, process.env.SECRET);
 
       // * Get user from token id is in payload/data
       req.user = await adminModel.findById(decoded.id).select("-password");

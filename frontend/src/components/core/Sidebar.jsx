@@ -1,21 +1,17 @@
-import React, { useState } from "react";
+import React from "react";
+import { motion } from "framer-motion";
 import {
-  IconButton,
   List,
   ListItem,
   ListItemIcon,
   ListItemText,
   Drawer,
-  Collapse,
-  Button,
   Avatar,
   Typography,
   Box,
 } from "@mui/material";
-import {makeStyles} from "@mui/styles";
+import { makeStyles } from "@mui/styles";
 import {
-  ExpandLess as ExpandLessIcon,
-  ExpandMore as ExpandMoreIcon,
   People as PeopleIcon,
   Forum as ForumIcon,
   Pages as PagesIcon,
@@ -25,10 +21,10 @@ import {
 
 const useStyles = makeStyles({
   drawerPaper: {
-    marginTop: "61px"
-  }
+    marginTop: "61px",
+  },
 });
-
+let scale = 1.05;
 const Sidebar = ({ open, handleToggle }) => {
   const classes = useStyles();
   const data = [
@@ -45,16 +41,15 @@ const Sidebar = ({ open, handleToggle }) => {
       anchor="left"
       onClose={handleToggle}
       classes={{
-    paper: classes.drawerPaper
-  }}
-      // BackdropProps={{ style: { backgroundColor: "transparent" }, marginTop: '2rem' }}
+        paper: classes.drawerPaper,
+      }}
     >
-      <Box sx={{ width: 245,   }}>
+      <Box sx={{ width: 245 }}>
         <List
           sx={{
-            backgroundColor: "#1A202E", 
+            backgroundColor: "#1A202E",
             paddingBottom: "10px",
-            height: "98vh",
+            height: scale === 1.05 ? "95vh" : "98vh",
           }}
         >
           <ListItem sx={{ flexDirection: "column" }}>
@@ -63,30 +58,38 @@ const Sidebar = ({ open, handleToggle }) => {
           </ListItem>
 
           {data.map((item) => (
-            <ListItem
-              button
-              key={item.label}
-              sx={{
-                paddingTop: "15px",
-                paddingBottom: "15px",
-                // backgroundColor: "#0F131C", // Darrk selected
-                color: "rgba(255,255,255,.8)",
-                "&:hover": {
-                  color: "#6373E5",
-                },
-                "&.Mui-selected": {
-                  backgroundColor: "#0F131C",
-                  color: "#6373E5",
-                },
-                "&.Mui-focused ": {
-                  backgroundColor: "#0F131C",
-                  color: "#6373E5",
-                },
+            <motion.div
+              whileHover={{
+                scale: scale,
               }}
+              whileTap={{ scale: 0.95 }}
+              key={item.label}
             >
-              <ListItemIcon sx={{ color: "inherit" }}>{item.icon}</ListItemIcon>
-              <Typography>{item.label}</Typography>
-            </ListItem>
+              <ListItem
+                button
+                sx={{
+                  paddingTop: "15px",
+                  paddingBottom: "15px",
+                  color: "rgba(255,255,255,.8)",
+                  "&:hover": {
+                    color: "#6373E5",
+                  },
+                  "&.Mui-selected": {
+                    backgroundColor: "#0F131C",
+                    color: "#6373E5",
+                  },
+                  "&.Mui-focused": {
+                    backgroundColor: "#0F131C",
+                    color: "#6373E5",
+                  },
+                }}
+              >
+                <ListItemIcon sx={{ color: "inherit" }}>
+                  {item.icon}
+                </ListItemIcon>
+                <Typography>{item.label}</Typography>
+              </ListItem>
+            </motion.div>
           ))}
         </List>
       </Box>

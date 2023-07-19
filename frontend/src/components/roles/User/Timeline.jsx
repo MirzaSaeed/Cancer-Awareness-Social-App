@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Container, Grid, Paper } from "@mui/material";
+import { Box, Container, Divider, Grid, Paper } from "@mui/material";
 import { motion } from "framer-motion";
 import SearchBar from "../../core/Searchbar";
 import CreatePost from "../../core/Createpost";
@@ -33,8 +33,6 @@ const Timeline = ({ isSidebarOpen }) => {
                       <UserProfile />
                     </motion.div>
                   </Box>
-
-                  <SearchBar />
                 </Paper>
               </Box>
             </Grid>
@@ -50,7 +48,8 @@ const Timeline = ({ isSidebarOpen }) => {
                     <CreatePost />
                   </motion.div>
                 </Box>
-
+                <Divider sx={{ background: "#909BAD" }} />
+                <Box sx={{ mt: 2 }}>
                   <motion.div
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
@@ -58,6 +57,7 @@ const Timeline = ({ isSidebarOpen }) => {
                   >
                     <TimelinePost />
                   </motion.div>
+                </Box>
               </Paper>
             </Grid>
 
@@ -65,7 +65,7 @@ const Timeline = ({ isSidebarOpen }) => {
             <Grid item xs={gridItemWidth} md={3}>
               <Box sx={{ position: "sticky", top: 70 }}>
                 <Paper sx={{ p: 2, background: "#1A202E", color: "#FFf" }}>
-                <motion.div
+                  <motion.div
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ duration: 0.5 }}
@@ -79,8 +79,6 @@ const Timeline = ({ isSidebarOpen }) => {
                   >
                     <SponsoredOrAds />
                   </motion.div>
-
-              
                 </Paper>
               </Box>
             </Grid>

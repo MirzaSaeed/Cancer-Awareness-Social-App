@@ -8,13 +8,15 @@ import {
   Tab,
   IconButton,
   Menu,
+  Box,
 } from "@mui/material";
 import logo from "../assets/2900470_25486 [Converted].png";
 import { useNavigate } from "react-router-dom";
-import Profile from "./Account";
-import { ArrowBack, Menu as MenuIcon,  } from "@mui/icons-material";
+
+import { ArrowBack, Menu as MenuIcon } from "@mui/icons-material";
 import Sidebar from "./Sidebar";
-import Timeline from "../roles/User/Timeline";
+import ProfileIcon from "./ProfileIcon";
+import SearchBar from "./Searchbar";
 const useStyles = makeStyles((theme) => ({
   title: {
     flexGrow: 1,
@@ -25,22 +27,13 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-// const tabs = {
-//   color: "#fff",
-// };
-// function a11yProps(index) {
-//   return {
-//     id: `simple-tab-${index}`,
-//     "aria-controls": `simple-tabpanel-${index}`,
-//   };
-// }
-
 const logoStyles = {
   marginRight: "8px",
   height: "30px",
 };
 const headingStyles = {
   display: "flex",
+  alignItems: "center",
 };
 
 const Header = () => {
@@ -53,21 +46,18 @@ const Header = () => {
     setOpen(!open);
   };
 
-  const [value, setValue] = useState("null");
+  const [value, setValue] = useState(0);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
   return (
-    <AppBar position="fixed" >
+    <AppBar position="fixed">
       <Toolbar>
         <IconButton edge="start" color="inherit" onClick={handleToggle}>
-        <Sidebar open={open} handleToggle={handleToggle} />
-        {open ? <ArrowBack /> :
-         <MenuIcon />}
-       
+          <Sidebar open={open} handleToggle={handleToggle} />
+          {open ? <ArrowBack /> : <MenuIcon />}
         </IconButton>
-
 
         <Typography
           variant="h6"
@@ -76,7 +66,11 @@ const Header = () => {
         >
           <img src={logo} alt="Logo" style={logoStyles} />
           Cancer Awareness
+          <Box sx={{ width: "20%", height: "20%", marginLeft: "2rem" }}>
+            <SearchBar />
+          </Box>
         </Typography>
+
         <Tabs
           value={value}
           textColor="inherit"
@@ -97,7 +91,7 @@ const Header = () => {
           <Tab label="ABOUT" onClick={() => navigate("/about")} />
           <Tab label="CONTACT US" onClick={() => navigate("/contactus")} />
         </Tabs>
-        <Profile />
+        <ProfileIcon />
       </Toolbar>
     </AppBar>
   );

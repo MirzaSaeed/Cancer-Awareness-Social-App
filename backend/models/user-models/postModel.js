@@ -18,18 +18,18 @@ const postSchema = new Schema({
     type: String,
   },
   image: {
-    type: Buffer,
+    type: String,
   },
   user: {
     type: Schema.Types.ObjectId,
     ref: "userAuths",
   },
-  comments: [{ type: mongoose.Schema.Types.ObjectId, ref: "Comment" }],
+  comments: [{ type: mongoose.Schema.Types.ObjectId, ref: "comments" }],
   admin: {
     type: Schema.Types.ObjectId,
     ref: "adminAuths",
   },
-  likes: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }],
+  likes: [{ type: Schema.Types.ObjectId, ref: "userAuths" }],
 });
 
 module.exports = mongoose.model("userPosts", postSchema);

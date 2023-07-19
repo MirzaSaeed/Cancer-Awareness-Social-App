@@ -6,10 +6,11 @@ const SearchBar = () => {
   return (
     <TextField
       variant="outlined"
+      size="small"
       placeholder="Search"
       InputProps={{
-        startAdornment: (
-          <InputAdornment position="start">
+        endAdornment: (
+          <InputAdornment position="end">
             <SearchIcon sx={{ color: "#fff", paddingRight: "5px" }} />
           </InputAdornment>
         ),
@@ -27,7 +28,6 @@ const SearchBar = () => {
           },
         },
       }}
-      fullWidth
     />
   );
 };

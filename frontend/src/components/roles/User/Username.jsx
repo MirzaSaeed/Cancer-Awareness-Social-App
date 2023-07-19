@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { motion } from "framer-motion";
 import { Button, Typography, TextField, Box } from "@mui/material";
 import logo from "../../assets/2900470_25486 [Converted].png";
@@ -104,11 +104,8 @@ const Username = () => {
 
 export default Username;
 
-
-
 const containerStyles = {
-    marginTop: "5rem",
-    height: "85vh",
-    background: "#232B3E",
-  };
-  
+  marginTop: "5rem",
+  height: "85vh",
+  background: "#232B3E",
+};

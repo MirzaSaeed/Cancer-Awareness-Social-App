@@ -16,6 +16,7 @@ import {
   IconButton,
   Tooltip,
   Divider,
+  Paper,
 } from "@mui/material";
 import { Instagram, Twitter, Language } from "@mui/icons-material";
 
@@ -206,212 +207,231 @@ const Profile = () => {
 
   return (
     <Container sx={containerStyles}>
-      <Box sx={{ marginTop: "5rem" }}>
-        <Grid container>
-          <Grid item xs={12}>
-            <motion.div
-              initial={{ opacity: 0, scale: 0.5 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5 }}
-            ></motion.div>
-            <Box display={"flex"} alignItems="center" justifyContent="center">
-              <Avatar
-                alt={user.name}
-                src="https://i.pravatar.cc/150?img=10"
-                sx={{ width: 100, height: 100, m: 5 }}
-              />
-              <Box>
-                <Typography variant="h6" pt={5} sx={{ fontWeight: "bold" }}>
-                  {user.name}
-                </Typography>
-                <Typography
-                  variant="subtitle1"
-                  sx={{ fontSize: "16px", color: "#909BAD" }}
-                >
-                  @{user.username}
-                </Typography>
-                <Typography
-                  variant="body1"
-                  pt={2}
-                  sx={{
-                    fontSize: "14px",
-                    color: "#909BAD",
-                    fontWeight: "bold",
-                  }}
-                >
-                  {user.bio}
-                </Typography>
+      <motion.div
+        initial={{ opacity: 0, scale: 0.5 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.5 }}
+      >
+        <Paper sx={{ background: "#1A202E", color: "#FFF" }}>
+          <Box sx={{ marginTop: "5rem", paddingBottom: "2rem" }}>
+            <Grid container>
+              <Grid item xs={12}>
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.5 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.5 }}
+                ></motion.div>
                 <Box
-                  display="flex"
+                  display={"flex"}
                   alignItems="center"
-                  justifyContent="space-between"
+                  justifyContent="center"
                 >
-                  <Typography variant="body1">Posts: {user.posts}</Typography>
-                  <Typography variant="body1">
-                    <Button
-                      sx={{ color: "#fff" }}
-                      onClick={handleFollowersClick}
+                  <Avatar
+                    alt={user.name}
+                    src="https://i.pravatar.cc/150?img=10"
+                    sx={{ width: 100, height: 100, m: 5 }}
+                  />
+                  <Box>
+                    <Typography variant="h6" pt={5} sx={{ fontWeight: "bold" }}>
+                      {user.name}
+                    </Typography>
+                    <Typography
+                      variant="subtitle1"
+                      sx={{ fontSize: "16px", color: "#909BAD" }}
                     >
-                      Followers: {user.followers.length}
-                    </Button>
-                  </Typography>
-                  <Typography variant="body1">
-                    <Button
-                      sx={{ color: "#fff" }}
-                      onClick={handleFollowingClick}
+                      @{user.username}
+                    </Typography>
+                    <Typography
+                      variant="body1"
+                      pt={2}
+                      sx={{
+                        fontSize: "14px",
+                        color: "#909BAD",
+                        fontWeight: "bold",
+                      }}
                     >
-                      Following: {user.following.length}
-                    </Button>
-                  </Typography>
+                      {user.bio}
+                    </Typography>
+                    <Box
+                      display="flex"
+                      alignItems="center"
+                      justifyContent="space-between"
+                    >
+                      <Typography variant="body1">
+                        Posts: {user.posts}
+                      </Typography>
+                      <Typography variant="body1">
+                        <Button
+                          sx={{ color: "#fff" }}
+                          onClick={handleFollowersClick}
+                        >
+                          Followers: {user.followers.length}
+                        </Button>
+                      </Typography>
+                      <Typography variant="body1">
+                        <Button
+                          sx={{ color: "#fff" }}
+                          onClick={handleFollowingClick}
+                        >
+                          Following: {user.following.length}
+                        </Button>
+                      </Typography>
+                    </Box>
+                    <Box>
+                      <Tooltip title="Website" arrow>
+                        <IconButton
+                          href={user.social.website}
+                          target="_blank"
+                          sx={{ color: "#c13584" }} // Facebook company color
+                          aria-label="Website"
+                        >
+                          <Language />
+                        </IconButton>
+                      </Tooltip>
+                      <Tooltip title="Twitter" arrow>
+                        <IconButton
+                          href={user.social.twitter}
+                          target="_blank"
+                          sx={{ color: "#00acee" }} // Twitter company color
+                          aria-label="Twitter"
+                        >
+                          <Twitter />
+                        </IconButton>
+                      </Tooltip>
+                      <Tooltip title="Instagram" arrow>
+                        <IconButton
+                          href={user.social.instagram}
+                          target="_blank"
+                          sx={{ color: "#e4405f" }} // Instagram company color
+                          aria-label="Instagram"
+                        >
+                          <Instagram />
+                        </IconButton>
+                      </Tooltip>
+                    </Box>
+                  </Box>
                 </Box>
-                <Box>
-                  <Tooltip title="Website" arrow>
-                    <IconButton
-                      href={user.social.website}
-                      target="_blank"
-                      sx={{ color: "#c13584" }} // Facebook company color
-                      aria-label="Website"
-                    >
-                      <Language />
-                    </IconButton>
-                  </Tooltip>
-                  <Tooltip title="Twitter" arrow>
-                    <IconButton
-                      href={user.social.twitter}
-                      target="_blank"
-                      sx={{ color: "#00acee" }} // Twitter company color
-                      aria-label="Twitter"
-                    >
-                      <Twitter />
-                    </IconButton>
-                  </Tooltip>
-                  <Tooltip title="Instagram" arrow>
-                    <IconButton
-                      href={user.social.instagram}
-                      target="_blank"
-                      sx={{ color: "#e4405f" }} // Instagram company color
-                      aria-label="Instagram"
-                    >
-                      <Instagram />
-                    </IconButton>
-                  </Tooltip>
-                </Box>
-              </Box>
-            </Box>
-          </Grid>
+              </Grid>
 
-          <Grid item xs={12} mt={2}>
-            <Typography mb={1} variant="h6" textAlign="center">
-              Posts
-            </Typography>
-            <Divider sx={{ background: "#909BAD" }} />
-            <Grid
-              container
-              display="flex"
-              justifyContent={"center"}
-              mt={1}
-              spacing={2}
-            >
-              {user.postsData.map((post) => (
-                <Grid item xs={6} sm={4} md={3} key={post.id}>
-                  <motion.div
-                    initial={{ opacity: 0, scale: 0.5 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.5 }}
-                  >
-                    <img
-                      src={post.image}
-                      alt={post.caption}
-                      style={{ width: "100%" }}
-                    />
-                    <Typography variant="body1">{post.caption}</Typography>
-                  </motion.div>
+              <Grid item mt={2}>
+                <Typography mb={1} variant="h6" textAlign="center">
+                  Posts
+                </Typography>
+                <Divider sx={{ background: "#909BAD" }} />
+                <Grid
+                  container
+                  display="flex"
+                  justifyContent={"space-evenly"}
+                  sx={{ marginTop: "1rem" }}
+                >
+                  {user.postsData.map((post) => (
+                    <Grid item xs={6} sm={4} md={3} key={post.id}>
+                      <motion.div
+                        initial={{ opacity: 0, scale: 0.5 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.5 }}
+                      >
+                        <img
+                          src={post.image}
+                          alt={post.caption}
+                          style={{ width: "100%" }}
+                        />
+                        <Typography variant="body1">{post.caption}</Typography>
+                      </motion.div>
+                    </Grid>
+                  ))}
                 </Grid>
-              ))}
-            </Grid>{" "}
-            <Grid
-              container
-              display="flex"
-              justifyContent={"center"}
-              mt={1}
-              spacing={2}
-            >
-              {user.postsData.map((post) => (
-                <Grid item xs={6} sm={4} md={3} key={post.id}>
-                  <motion.div
-                    initial={{ opacity: 0, scale: 0.5 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.5 }}
-                  >
-                    <img
-                      src={post.image}
-                      alt={post.caption}
-                      style={{ width: "100%" }}
-                    />
-                    <Typography variant="body1">{post.caption}</Typography>
-                  </motion.div>
+                <Grid
+                  display="flex"
+                  justifyContent={"space-evenly"}
+                  sx={{ marginTop: "1rem" }}
+                >
+                  {user.postsData.map((post) => (
+                    <Grid item xs={6} sm={4} md={3} key={post.id}>
+                      <motion.div
+                        initial={{ opacity: 0, scale: 0.5 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.5 }}
+                      >
+                        <img
+                          src={post.image}
+                          alt={post.caption}
+                          style={{ width: "100%" }}
+                        />
+                        <Typography variant="body1">{post.caption}</Typography>
+                      </motion.div>
+                    </Grid>
+                  ))}
                 </Grid>
-              ))}
+              </Grid>
+              <Dialog open={followersOpen} onClose={handleFollowersClose}>
+                <DialogTitle sx={{ background: "#1A202E", color: "#fff" }}>
+                  Followers
+                </DialogTitle>
+                <DialogContent sx={{ background: "#1A202E", color: "#8599AB" }}>
+                  <List>
+                    {user.followers.map((follower) => (
+                      <ListItem key={follower}>
+                        <ListItemText>
+                          <Box
+                            key={follower.id}
+                            sx={{
+                              display: "flex",
+                              alignItems: "center",
+                              mb: 2,
+                            }}
+                          >
+                            <Avatar
+                              src={follower.avatar}
+                              alt={follower.name}
+                              sx={{ mr: 2 }}
+                            />
+                            <Typography variant="subtitle1">
+                              {follower.name}
+                            </Typography>
+                          </Box>
+                        </ListItemText>
+                      </ListItem>
+                    ))}
+                  </List>
+                </DialogContent>
+              </Dialog>
+              <Dialog open={followingOpen} onClose={handleFollowingClose}>
+                <DialogTitle sx={{ background: "#1A202E", color: "#fff" }}>
+                  Following
+                </DialogTitle>
+                <DialogContent sx={{ background: "#1A202E", color: "#8599AB" }}>
+                  <List>
+                    {user.following.map((following) => (
+                      <ListItem key={following}>
+                        <ListItemText>
+                          <Box
+                            key={following.id}
+                            sx={{
+                              display: "flex",
+                              alignItems: "center",
+                              mb: 2,
+                            }}
+                          >
+                            <Avatar
+                              src={following.avatar}
+                              alt={following.name}
+                              sx={{ mr: 2 }}
+                            />
+                            <Typography variant="subtitle1">
+                              {following.name}
+                            </Typography>
+                          </Box>
+                        </ListItemText>
+                      </ListItem>
+                    ))}
+                  </List>
+                </DialogContent>
+              </Dialog>
             </Grid>
-          </Grid>
-          <Dialog open={followersOpen} onClose={handleFollowersClose}>
-            <DialogTitle sx={{ background: "#1A202E", color: "#fff" }}>
-              Followers
-            </DialogTitle>
-            <DialogContent sx={{ background: "#1A202E", color: "#8599AB" }}>
-              <List>
-                {user.followers.map((follower) => (
-                  <ListItem key={follower}>
-                    <ListItemText>
-                      <Box
-                        key={follower.id}
-                        sx={{ display: "flex", alignItems: "center", mb: 2 }}
-                      >
-                        <Avatar
-                          src={follower.avatar}
-                          alt={follower.name}
-                          sx={{ mr: 2 }}
-                        />
-                        <Typography variant="subtitle1">
-                          {follower.name}
-                        </Typography>
-                      </Box>
-                    </ListItemText>
-                  </ListItem>
-                ))}
-              </List>
-            </DialogContent>
-          </Dialog>
-          <Dialog open={followingOpen} onClose={handleFollowingClose}>
-            <DialogTitle sx={{ background: "#1A202E", color: "#fff" }}>
-              Following
-            </DialogTitle>
-            <DialogContent sx={{ background: "#1A202E", color: "#8599AB" }}>
-              <List>
-                {user.following.map((following) => (
-                  <ListItem key={following}>
-                    <ListItemText>
-                      <Box
-                        key={following.id}
-                        sx={{ display: "flex", alignItems: "center", mb: 2 }}
-                      >
-                        <Avatar
-                          src={following.avatar}
-                          alt={following.name}
-                          sx={{ mr: 2 }}
-                        />
-                        <Typography variant="subtitle1">
-                          {following.name}
-                        </Typography>
-                      </Box>
-                    </ListItemText>
-                  </ListItem>
-                ))}
-              </List>
-            </DialogContent>
-          </Dialog>
-        </Grid>
-      </Box>
+          </Box>
+        </Paper>
+      </motion.div>
     </Container>
   );
 };
@@ -419,5 +439,6 @@ const Profile = () => {
 export default Profile;
 const containerStyles = {
   height: "94vh",
+  width: "36%",
   background: "#232B3E",
 };

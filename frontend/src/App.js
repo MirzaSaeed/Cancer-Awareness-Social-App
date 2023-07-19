@@ -29,7 +29,7 @@ const theme = createTheme({
 const App = () => {
   return (
     <ThemeProvider theme={theme}>
-      <AppStarter  />
+      <AppStarter />
     </ThemeProvider>
   );
 };

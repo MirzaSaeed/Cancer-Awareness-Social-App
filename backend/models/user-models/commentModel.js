@@ -19,6 +19,7 @@ const commentSchema = new Schema({
   commentBy: {
     type: String,
   },
+
   commentTo: {
     type: String,
   },

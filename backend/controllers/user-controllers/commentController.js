@@ -15,15 +15,17 @@ const commenting = asyncHandler(async (req, res) => {
     if (existPost && user) {
       const { comment, commentBy, commenterId } = req.body;
       const addComment = await commentModel.create({
-        comment,
         commentBy: `${verifiedUser.firstName} ${verifiedUser.lastName}`,
+        comment,
         commenterId: verifiedUser.id,
         user: user.id,
         admin: admin.id,
         commentTo: `${user.username}`,
         post: existPost.id,
       });
-      res.status(201).json(addComment);
+      res.status(201).json(comment);
+      existPost.comments.push(addComment._id);
+      existPost.save();
     } else {
       res.status(401).json("Not Authorized");
     }
@@ -37,7 +39,7 @@ const getComments = asyncHandler(async (req, res) => {
   if (verifiedUser) {
     const comments = await commentModel.find({ post: req.params.id });
     if (comments) {
-      res.status(201).json({ comments });
+      res.status(201).json(comments.comment);
     } else {
       res.status(401).json("No Comments");
     }
