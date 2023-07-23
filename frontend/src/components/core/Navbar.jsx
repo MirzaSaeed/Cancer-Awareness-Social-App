@@ -1,9 +1,20 @@
 import React, { useState } from "react";
 import { makeStyles } from "@mui/styles";
-import { AppBar, Toolbar, Typography, Tabs, Tab, Box } from "@mui/material";
+import {
+  AppBar,
+  Toolbar,
+  Typography,
+  Tabs,
+  Tab,
+  IconButton,
+  Box,
+} from "@mui/material";
 import logo from "../assets/2900470_25486 [Converted].png";
 import { useNavigate } from "react-router-dom";
 
+import { ArrowBack, Menu as MenuIcon } from "@mui/icons-material";
+import Sidebar from "./Sidebar";
+import ProfileIcon from "./ProfileIcon";
 import SearchBar from "./Searchbar";
 const useStyles = makeStyles((theme) => ({
   title: {
@@ -24,9 +35,15 @@ const headingStyles = {
   alignItems: "center",
 };
 
-const Header = () => {
+const Navbar = () => {
   const navigate = useNavigate();
   const classes = useStyles();
+
+  const [open, setOpen] = useState(false);
+
+  const handleToggle = () => {
+    setOpen(!open);
+  };
 
   const [value, setValue] = useState(0);
 
@@ -36,10 +53,10 @@ const Header = () => {
   return (
     <AppBar position="fixed">
       <Toolbar>
-        {/* <IconButton edge="start" color="inherit" onClick={handleToggle}>
+        <IconButton edge="start" color="inherit" onClick={handleToggle}>
           <Sidebar open={open} handleToggle={handleToggle} />
           {open ? <ArrowBack /> : <MenuIcon />}
-        </IconButton> */}
+        </IconButton>
 
         <Typography
           variant="h6"
@@ -73,10 +90,10 @@ const Header = () => {
           <Tab label="ABOUT" onClick={() => navigate("/about")} />
           <Tab label="CONTACT US" onClick={() => navigate("/contactus")} />
         </Tabs>
-        {/* <ProfileIcon /> */}
+        <ProfileIcon />
       </Toolbar>
     </AppBar>
   );
 };
 
-export default Header;
+export default Navbar;

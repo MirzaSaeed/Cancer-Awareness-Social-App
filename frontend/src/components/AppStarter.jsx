@@ -12,6 +12,7 @@ import Relationship from "./roles/User/Relationship";
 import Profile from "./core/Profile";
 import SelectType from "./core/SelectType";
 import Account from "./core/Account";
+import Navbar from "./core/Navbar";
 const containerStyles = {
   display: "flex",
   flexDirection: "column",
@@ -58,7 +59,7 @@ const AppStarter = () => {
       path: "/timeline",
       element: (
         <>
-          <Header />
+          <Navbar />
           <Timeline />
           <Footer />
         </>
@@ -68,7 +69,7 @@ const AppStarter = () => {
       path: "/setUsername",
       element: (
         <>
-          <Header />
+          <Navbar />
           <Username />
           <Footer />
         </>
@@ -78,7 +79,7 @@ const AppStarter = () => {
       path: "/setRelation",
       element: (
         <>
-          <Header />
+          <Navbar />
           <Relationship />
           <Footer />
         </>
@@ -88,7 +89,7 @@ const AppStarter = () => {
       path: "/Profile",
       element: (
         <>
-          <Header />
+          <Navbar />
           <Profile />
           <Footer />
         </>
@@ -98,7 +99,7 @@ const AppStarter = () => {
       path: "/setType",
       element: (
         <>
-          <Header />
+          <Navbar />
           <SelectType />
           <Footer />
         </>
@@ -108,7 +109,7 @@ const AppStarter = () => {
       path: "/Account",
       element: (
         <>
-          <Header />
+          <Navbar />
           <Account />
           <Footer />
         </>

@@ -13,8 +13,8 @@ import {
   ListItemIcon,
 } from "@mui/material";
 import { blueGrey } from "@mui/material/colors";
-import { AccountCircle, Logout, PermMedia, Person } from "@mui/icons-material";
-import { useNavigate, Outlet } from "react-router-dom";
+import { AccountCircle, Logout, Person } from "@mui/icons-material";
+import { useNavigate } from "react-router-dom";
 
 const BootstrapTooltip = styled(({ className, ...props }) => (
   <Tooltip {...props} arrow classes={{ popper: className }} />
@@ -30,10 +30,10 @@ const BootstrapTooltip = styled(({ className, ...props }) => (
 const ProfileIcon = () => {
   const navigate = useNavigate();
   const data = [
-    { icon: <Person />, label: "Profile" },
-    { icon: <AccountCircle />, label: "Account" },
+    { icon: <Person />, label: "Profile", link: "Profile" },
+    { icon: <AccountCircle />, label: "Account", link: "Account" },
     // { icon: <PermMedia />, label: "Dashboard" },
-    { icon: <Logout />, label: "Logout" },
+    { icon: <Logout />, label: "Logout", link: " " },
   ];
 
   const [anchorElUser, setAnchorElUser] = useState(null);
@@ -96,7 +96,7 @@ const ProfileIcon = () => {
                   color: "#6373E5",
                 },
               }}
-              onClick={() => navigate(`/${item.label}`)}
+              onClick={() => navigate(`/${item.link}`)}
             >
               <ListItemIcon sx={{ color: "inherit" }}>{item.icon}</ListItemIcon>
               <Typography textAlign="center">{item.label}</Typography>
